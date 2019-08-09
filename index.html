@@ -18,6 +18,20 @@
             }
         }
         loop(5, callback = () => console.log('ok'));
+
+        //task2
+        function calculateArea(figure, input) {
+            let area = null;
+            if(figure == 'square') {
+                area = input * input;                
+            }
+            if(figure == 'rectangle') {
+                area = input[0] * input[1];                
+            }
+            return area;
+        }
+        console.log(calculateArea('square', 3));
+        console.log(calculateArea('rectangle', [3, 5]));
     </script>
 </body>
 </html>
