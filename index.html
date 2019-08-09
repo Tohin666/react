@@ -33,7 +33,7 @@
         }
         console.log(calculateArea('square', 3));
         console.log(calculateArea('rectangle', [3, 5]));
-        
+
 
         //task3
         class Human {
@@ -57,12 +57,12 @@
             }
         }
         class Developer extends Employee {
-            constructor(name, age, dateOfBirth, salary, department, salary, department, manager) {
+            constructor(name, age, dateOfBirth, salary, department, manager) {
                 super (name, age, dateOfBirth, salary, department);
                 this.manager = manager;                
             }
-            changeManager(name) {
-                this.manager = name;
+            changeManager(managerName) {
+                this.manager = managerName;
             }
         }
         class Manager extends Employee {
