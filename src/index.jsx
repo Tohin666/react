@@ -6,6 +6,9 @@ import Layout from './components/Layout'
 import MainPage from './components/MainPage';
 import Login from './components/Login';
 
+require('bootstrap');
+import 'bootstrap';
+
 const items = [
     {href: '/', title: 'Home'},
     {href: '/news', title: 'News'},
