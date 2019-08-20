@@ -7,7 +7,12 @@ html {
     color: ​#658321;
     background-color: #fff;
 }
-body {
+/* body {
     padding: 60px;
     text-align: center;
+} */
+
+.container {
+    display: flex;
+    justify-content: space-between;
 }

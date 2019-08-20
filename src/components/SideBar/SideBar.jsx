@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react'
 
-import './MainPage.css'
+import './SideBar.css'
 
-export default class MainPage extends Component {
+export default class SideBar extends Component {
     render () {
         const {children} = this.props
         return (
             <Fragment>
-                <div className="main-page col-lg-8">
+                <div className="side-bar col-md-4">
                     { children }
                 </div>
             </Fragment>

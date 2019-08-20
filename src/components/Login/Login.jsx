@@ -9,7 +9,7 @@ export default class Login extends Component {
         const {children} = this.props
         return (
             <Fragment>
-                <Button>            
+                <Button className="login-button">            
                     Login                
                 </Button>
             </Fragment>

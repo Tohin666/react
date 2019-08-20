@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import './Layout.css'
+import './Nav.css'
 
-export default class Layout extends Component {
+export default class Nav extends Component {
     render () {
         const {children} = this.props
         return (
-            <div>
+            <div className="nav">
                 { children }
             </div>
         )
