@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font:​ 14px​ normal ​Arial​,​ sans​-​serif;
+    color: ​#658321;
+    background-color: #fff;
+}
+body {
+    padding: 60px;
+    text-align: center;
+}

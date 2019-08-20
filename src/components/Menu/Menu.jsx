@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import ReactDom from 'react-dom'
+
 import './Menu.css'
 
 export default class Menu extends Component {
@@ -10,7 +10,7 @@ export default class Menu extends Component {
             <Fragment>
                 <h1> { title } </h1>
                 <ul className="menu">
-                    { items_prop.map (el => <li> <a href= { el.href } > { el.title } </a></li>) }
+                    { items_prop.map ((item, idx) => <li key={ idx }> <a href= { item.href } > { item.title } </a></li>) }
                 </ul>
             </Fragment>
         )

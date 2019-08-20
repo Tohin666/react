@@ -1,5 +1,6 @@
 const path = require ('path') // модуль для путей в разных операционках
-const HtmlPlugin = require ('html-webpack-plugin') // его надо установить
+const HtmlWebpackPlugin = require ('html-webpack-plugin') // его надо установить
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = { // это из ноды
     entry: { // переопределяем точку входа (она такая и есть по умолчанию)
@@ -8,6 +9,9 @@ module.exports = { // это из ноды
     output: { // указываем куда размещать бандл (по умолянию называет main.js)
         path: path.resolve (__dirname, 'dist'),
         filename: 'bundle.js'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
     },
     module: { // набор правил
         rules: [
@@ -20,12 +24,16 @@ module.exports = { // это из ноды
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']                
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader'],
+                })                
             }
         ]
     },
     plugins: [ // указываем какие файлы какому плагину скармливать, чтобы не хавал все подряд        
-        new HtmlPlugin ({
+        new ExtractTextPlugin({ filename: 'style.css' }),
+        new HtmlWebpackPlugin ({
             template: path.resolve (__dirname, 'src', 'index.html'), // указываем ссылку на исходник
             filename: 'index.html' // как будет называться после сборки
         })

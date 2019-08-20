@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
-import ReactDom from 'react-dom'
+import React, { Component, Fragment } from 'react'
+
 import './MainPage.css'
 
 export default class MainPage extends Component {
     render () {
         const {children} = this.props
         return (
-            <div>
-                { children }
-            </div>
+            <Fragment>
+                <div className="main-page">
+                    { children }
+                </div>
+            </Fragment>
         )
     }
 }
