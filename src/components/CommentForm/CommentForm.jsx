@@ -1,6 +1,7 @@
 import './CommentForm.css';
 
 import React, { Component, Fragment } from 'react';
+import { Card, Button, CardHeader, CardBody, Input, InputGroup } from 'reactstrap';
 
 export default class CommentForm extends Component {
   constructor (props) {
@@ -8,7 +9,8 @@ export default class CommentForm extends Component {
 
     this.state = {
       author: '',
-      message: ''
+      message: '',
+      // comments: []
     }
   }
 
@@ -30,18 +32,21 @@ export default class CommentForm extends Component {
 
   render() {
     let { author, message } = this.state
+    // const { comments } = this.state
     
     return (
       <Fragment>
-        <input type="text" value={ author } onChange={this.handleChange} name="author"/>
-
-        <br/><br/>
-
-        <textarea name="message" id="" cols="30" rows="10" onChange={this.handleChange} value={ message }></textarea>
-
-        <br/><br/>
-
-        <button onClick={this.handleClick}>Send</button>
+        <Card>
+            <CardHeader tag="h3">Leave a Comment:</CardHeader>
+            <CardBody>                
+                  <Input value={ author } onChange={this.handleChange} name="author" placeholder="Name" /><br/>
+                  <Input type="textarea" name="message" rows="3" onChange={this.handleChange} value={ message } /><br/>
+                  <Button onClick={this.handleClick}>Submit</Button>                
+            </CardBody>
+        </Card>
+        {/* <ul>
+            {comments.map ((comment, idx) => <li key={idx}><h3>{comment.author}</h3><p>{comment.message}</p></li>)}
+        </ul> */}
       </Fragment>
     )
   }

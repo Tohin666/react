@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack-dev-server --mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "c-full": "node util/index.js --n",
+    "c-less": "node util/index.js --s --n"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "css-loader": "^3.2.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
+    "minimist": "^1.2.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
@@ -35,10 +38,8 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.15.0",
     "react": "^16.9.0",
-    "react-bootstrap": "^1.0.0-beta.11",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "reactstrap": "^8.0.1"
   }
 }

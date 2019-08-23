@@ -12,6 +12,10 @@ module.exports = { // это из ноды
     },
     resolve: {
         extensions: ['.js', '.jsx'],
+        alias: {
+        components: path.resolve(__dirname, 'src', 'components'),
+        containers: path.resolve(__dirname, 'src', 'containers'),
+        },
     },
     module: { // набор правил
         rules: [
