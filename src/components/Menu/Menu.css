@@ -2,14 +2,14 @@ ul {
     list-style: none;
     display: inline-block;
 }
-ul li {
+/* ul li {
     display: inline-block;
     padding: 10px 20px;
     cursor: pointer;
     background-color: #eee;
     color: #156831;
     transition: 0.3;
-}
+} */
 ul li:hover {    
     background-color: #beecea;    
 }

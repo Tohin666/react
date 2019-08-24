@@ -5,6 +5,8 @@ import Menu from './components/Menu' // пишем дальше /Menu.jsx пот
 import Container from './components/Container'
 import Layout from './components/Layout'
 import MainPage from './components/MainPage';
+import AboutPage from './components/AboutPage';
+import NewsPage from './components/NewsPage';
 import Login from './components/Login';
 import CommentForm from './components/CommentForm'
 import Nav from './components/Nav'
@@ -20,8 +22,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const brandName = 'Start Bootstrap';
 const items = [
     {href: '/', title: 'Home'},
-    {href: '/news', title: 'News'},
-    {href: '/blog', title: 'Blog'}
+    {href: '#/news', title: 'News'},
+    {href: '#/blog', title: 'Blog'},
+    {href: '#/about', title: 'About'},
 ]
 
 class App extends Component {
@@ -29,8 +32,17 @@ class App extends Component {
         super(props);
     
         this.state = {
-          comments: []
+          comments: [],
+          route: window.location.hash.substr(1),          
         } 
+    }
+
+    componentDidMount(){
+        window.addEventListener('hashchange',()=>{
+            this.setState({
+                route: window.location.hash.substr(1)
+                })
+            })
     }
     
     handleComment = (comment) => {
@@ -40,8 +52,22 @@ class App extends Component {
         }))
     }
     
-    render () {
+    render () {        
         const { comments } = this.state
+        let Page
+        switch (this.state.route) {
+            case '/news':
+                Page = NewsPage;
+                break;
+            case '/blog':
+                Page = AboutPage;
+                break;
+            case '/about':
+                Page = AboutPage;
+                break;
+            default:
+                Page = MainPage;
+        }        
         
         return (
             <div className="box">                
@@ -55,18 +81,8 @@ class App extends Component {
                     </Container>
                 </Nav>
                 <Container>                        
-                    <MainPage>
-                        <h1>Post Title</h1>
-                        <hr/>
-                        <img src="/src/img/900x300.png" alt="" width="100%"/>
-                        <hr/>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ut iste omnis beatae asperiores incidunt quo excepturi fugiat, quaerat, harum cum tempora ratione reiciendis deserunt. Minima cumque odit dolor dicta.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos pariatur quia inventore quasi incidunt repudiandae corporis neque, cum nisi maiores voluptatibus fugit laborum tempore? Corporis qui veniam sunt vero officiis quo culpa soluta unde possimus ut labore mollitia at ratione dolore nihil, ullam, harum minima aliquam facere quibusdam itaque sit aut amet esse. Nobis, dolor aspernatur, dolorum modi quibusdam eos amet corrupti animi consequuntur laudantium necessitatibus distinctio sapiente velit inventore minus nam, atque quasi? Amet nobis, illo optio consequatur fugit perspiciatis laboriosam distinctio in id dicta praesentium ducimus aliquid vitae necessitatibus blanditiis minus debitis repudiandae dolore quia tenetur eaque laborum?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ut iste omnis beatae asperiores incidunt quo excepturi fugiat, quaerat, harum cum tempora ratione reiciendis deserunt. Minima cumque odit dolor dicta.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos pariatur quia inventore quasi incidunt repudiandae corporis neque, cum nisi maiores voluptatibus fugit laborum tempore? Corporis qui veniam sunt vero officiis quo culpa soluta unde possimus ut labore mollitia at ratione dolore nihil, ullam, harum minima aliquam facere quibusdam itaque sit aut amet esse. Nobis, dolor aspernatur, dolorum modi quibusdam eos amet corrupti animi consequuntur laudantium necessitatibus distinctio sapiente velit inventore minus nam, atque quasi? Amet nobis, illo optio consequatur fugit perspiciatis laboriosam distinctio in id dicta praesentium ducimus aliquid vitae necessitatibus blanditiis minus debitis repudiandae dolore quia tenetur eaque laborum?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ut iste omnis beatae asperiores incidunt quo excepturi fugiat, quaerat, harum cum tempora ratione reiciendis deserunt. Minima cumque odit dolor dicta.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos pariatur quia inventore quasi incidunt repudiandae corporis neque, cum nisi maiores voluptatibus fugit laborum tempore? Corporis qui veniam sunt vero officiis quo culpa soluta unde possimus ut labore mollitia at ratione dolore nihil, ullam, harum minima aliquam facere quibusdam itaque sit aut amet esse. Nobis, dolor aspernatur, dolorum modi quibusdam eos amet corrupti animi consequuntur laudantium necessitatibus distinctio sapiente velit inventore minus nam, atque quasi? Amet nobis, illo optio consequatur fugit perspiciatis laboriosam distinctio in id dicta praesentium ducimus aliquid vitae necessitatibus blanditiis minus debitis repudiandae dolore quia tenetur eaque laborum?
-
+                    <Page>
+                        
                         <br/><hr/>                            
                         <CommentForm onSend={this.handleComment} />
                         <br/>
@@ -76,7 +92,7 @@ class App extends Component {
                         
                         <CommentsContainer />
 
-                    </MainPage>
+                    </Page>
 
                     <SideBar>
                         <Search></Search>                        
