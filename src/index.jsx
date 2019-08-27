@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import ReactDom from 'react-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+// import routes from './routes';
 
-import Menu from './components/Menu' // пишем дальше /Menu.jsx потому что прописали там в index.js
+import Menu from './components/Menu' // не пишем дальше /Menu.jsx потому что прописали там в index.js
 import Container from './components/Container'
 import Layout from './components/Layout'
 import MainPage from './components/MainPage';
