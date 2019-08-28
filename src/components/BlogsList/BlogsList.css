@@ -1,0 +1,13 @@
+.blogs-list a {
+    color: #000 !important;
+}
+
+.blogs-list-card {
+    margin-top: 30px;
+}
+
+.blogs-list-btn {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    margin-top: 15px;
+}

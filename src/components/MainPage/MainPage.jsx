@@ -8,7 +8,7 @@ export default class MainPage extends Component {
         return (
             <Fragment>
                 <div className="main-page col-lg-8">
-                    <h1>Post Title</h1>
+                    <h1>Main Page</h1>
                     <hr/>
                     <img src="/src/img/900x300.png" alt="" width="100%"/>
                     <hr/>

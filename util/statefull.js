@@ -22,7 +22,7 @@ module.exports = (componentName) => {
         
         return (
           <Fragment>
-            <div class="${componentName}"></div>
+            <div className="${componentName}"></div>
           </Fragment>
         )
       }

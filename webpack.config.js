@@ -34,7 +34,11 @@ module.exports = { // это из ноды
                 })                
             }
         ]
-    },
+    },    
+    devServer: {
+        open: true, // чтобы при загрузке сервера открывался браузер
+        historyApiFallback: true // Чтобы при роутинге нормально обновлялось
+      },
     plugins: [ // указываем какие файлы какому плагину скармливать, чтобы не хавал все подряд        
         new ExtractTextPlugin({ filename: 'style.css' }),
         new HtmlWebpackPlugin ({

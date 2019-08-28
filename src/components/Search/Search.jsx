@@ -4,7 +4,24 @@ import { Card, Button, CardHeader, CardBody, Input, InputGroup } from 'reactstra
 import './Search.css'
 
 export default class Search extends Component {
-    render () {        
+    constructor(props) {
+        super(props);
+        this.state = {
+            userSearch: /./
+        };
+    }
+
+    handleSearch = (e) => {
+        let { onSearch } = this.props
+
+        onSearch(this.state.userSearch)
+    }
+
+    addReg = (e) => {
+        let reg = e.target.value
+        this.setState({ userSearch: new RegExp(reg, 'i') })
+    }
+    render() {
         return (
             // вместо дивов, чтобы не вкладывались друг в друга при рендере верстки, подключается выше.
             <Fragment>
@@ -12,8 +29,8 @@ export default class Search extends Component {
                     <CardHeader tag="h3">Search</CardHeader>
                     <CardBody>
                         <InputGroup>
-                            <Input placeholder="Search for..." />
-                            <Button>Go</Button>
+                            <Input onInput={this.addReg} placeholder="Search for..." />
+                            <Button onClick={this.handleSearch}>Go</Button>
                         </InputGroup>
                     </CardBody>
                 </Card>
