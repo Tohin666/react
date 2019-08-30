@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import ReactDom from 'react-dom'
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import routes from './routes';
+
+import { Provider } from 'react-redux'
+import store from './store' //Объект store, который мы создали
 
 import Menu from './components/Menu' // не пишем дальше /Menu.jsx потому что прописали там в index.js
 import Container from './components/Container'
@@ -88,4 +92,5 @@ class App extends Component {
 }
 
 //ReactDom.render (/Что/, /Куда/)
-ReactDom.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root')); // обернули в BrowserRouter для роутинга
+ReactDom.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root')); // обернули в BrowserRouter для роутинга, 
+// и еще обернули в провайдер для редакса, в который прокидываем объект хранилища
