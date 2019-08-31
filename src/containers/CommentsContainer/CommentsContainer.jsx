@@ -1,9 +1,10 @@
 import './CommentsContainer.css'
 
+import React, { Component, Fragment } from 'react'
+
 import CommentForm from 'components/CommentForm'
 import CommentsList from 'components/CommentsList'
 
-import React, { Component, Fragment } from 'react'
 
 import { connect } from 'react-redux' // метод для связи с редаксом
 import { load } from 'actions/comments' // экшн который мы создали
