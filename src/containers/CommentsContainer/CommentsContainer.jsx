@@ -39,25 +39,26 @@ class CommentsContainer extends Component {// экспортируем вниз�
   //     .catch (() => { this.setState ({ loading: false }) })
   // }
 
-  // handleScroll = () => {
-  //   // console.log(document.documentElement.clientHeight, window.scrollY, window.innerHeight, document.documentElement.clientHeight - window.scrollY - window.innerHeight)
-  //   if (document.documentElement.clientHeight - window.scrollY - window.innerHeight === 0) {
-  //     if (!this.state.loading) {
-  //       this.loadComments ()
-  //     }
-  //   }
-  // }
+  handleScroll = () => {
+    const { loadComments } = this.props // loadComments внизу в mapDispatchToProps
+
+    if (document.documentElement.clientHeight - window.scrollY - window.innerHeight === 0) {
+      if (!this.props.loading) {
+        loadComments()
+      }
+    }
+  }
 
   componentDidMount() {
     const { loadComments } = this.props // loadComments внизу в mapDispatchToProps
     loadComments()
 
-    // window.addEventListener ('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
   }
 
-  // componentWillUnmount () {
-  //   window.removeEventListener ('scroll', this.handleScroll)
-  // }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
 
   render() {
     const { comments, loading } = this.props // теперь используем не стейты а пропсы
@@ -83,7 +84,8 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    loadComments: () => load(dispatch)
+    loadComments: () => dispatch(load())
+    // loadComments: () => load(dispatch)
   }
 }
 

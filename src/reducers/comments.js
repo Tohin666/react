@@ -5,7 +5,8 @@ import { loadStarted, loadCompleted, loadFailed } from 'actions/comments' // и�
 // объявляем за какие данные в хранилище данный редюсер отвечает
 const initialState = {
     loading: false,
-    entities: [] // comments
+    entities: [], // comments
+    page: 1
 }
 
 export default handleActions ({
@@ -19,7 +20,8 @@ export default handleActions ({
         return {
             ...state,
             loading: false,
-            entities: state.entities.concat (action.payload) // то что мы пробросили в экшене dispatch (loadCompleted (comments)), comments - это payload
+            entities: state.entities.concat (action.payload), // то что мы пробросили в экшене dispatch (loadCompleted (comments)), comments - это payload
+            page: state.page + 1
         }
     },
     [loadFailed]: (state) => {
