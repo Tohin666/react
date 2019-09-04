@@ -3,6 +3,7 @@ import AboutPage from './components/AboutPage';
 import NewsPage from './components/NewsPage';
 import BlogPage from './components/BlogPage';
 import BlogContainer from './containers/BlogsContainer/BlogContainer.jsx';
+import MessagesContainer from './containers/MessagesContainer.jsx';
 
 
 export default [
@@ -13,4 +14,5 @@ export default [
     {path: '/about', exact: true, component: AboutPage},
     // {path: '/comments', exact: true, component: CommentsContainer},
     // {path: '/comments/:id', exact: true, component: CommentContainer}
+    {path: '/messages', exact: true, component: MessagesContainer}
 ]

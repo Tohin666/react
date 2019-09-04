@@ -30,6 +30,7 @@ const items = [
     { href: '/news', title: 'News' },
     { href: '/blog', title: 'Blog' },
     { href: '/about', title: 'About' },
+    { href: '/messages', title: 'Messages' },
 ]
 
 class App extends Component {
