@@ -14,15 +14,22 @@ export default class CommentsList extends Component {
   //methods
 
   render() {
-    const { comments } = this.props
+    const { messages } = this.props
+    // const { comments } = this.props
+
     return (
       <Fragment>
         <ul className="comments-list">
-          {comments.map(({ name, body }, idx) =>
+          {/* {comments.map(({ name, body }, idx) =>
             <li key={idx}>
               <h3> {name} </h3>
               <p> {body} </p>
-            </li>)}
+            </li>)} */}
+          {messages.map((el) => <li key={el._id}>
+            <h3>{el.author}</h3>
+            <p>{el.text}</p>
+            <h4>{el.timeStamp}</h4>
+          </li>)}
         </ul>
       </Fragment>
     )

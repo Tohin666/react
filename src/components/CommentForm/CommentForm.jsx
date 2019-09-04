@@ -9,19 +9,26 @@ export default class CommentForm extends Component {
 
     this.state = {
       author: '',
-      message: '',
+      // message: '',
+      text: '',
       // comments: []
     }
   }
 
-  handleClick = (e) => {
-    const { onSend } = this.props
+  // handleClick = (e) => {
+  //   const { onSend } = this.props
 
-    this.setState ({ message: ''})
+  //   this.setState ({ message: ''})
 
-    if (typeof onSend === 'function') {
-      onSend (this.state)
-    }
+  //   if (typeof onSend === 'function') {
+  //     onSend (this.state)
+  //   }
+  // }
+
+  handleSend = () => {
+    const { send } = this.props
+    send(this.state)
+    this.setState({text: ''})
   }
 
   handleChange = (e) => {
@@ -31,7 +38,8 @@ export default class CommentForm extends Component {
   }
 
   render() {
-    let { author, message } = this.state
+    const {author, text} = this.state
+    // let { author, message } = this.state
     // const { comments } = this.state
     
     return (
@@ -40,8 +48,10 @@ export default class CommentForm extends Component {
             <CardHeader tag="h3">Leave a Comment:</CardHeader>
             <CardBody>                
                   <Input value={ author } onChange={this.handleChange} name="author" placeholder="Name" /><br/>
-                  <Input type="textarea" name="message" rows="3" onChange={this.handleChange} value={ message } /><br/>
-                  <Button onClick={this.handleClick}>Submit</Button>                
+                  <Input type="textarea" name="text" rows="3" onChange={this.handleChange} value={ text } /><br/>
+                  {/* <Input type="textarea" name="message" rows="3" onChange={this.handleChange} value={ message } /><br/> */}
+                  <Button onClick={this.handleSend}>Submit</Button>                
+                  {/* <Button onClick={this.handleClick}>Submit</Button>                 */}
             </CardBody>
         </Card>
         {/* <ul>

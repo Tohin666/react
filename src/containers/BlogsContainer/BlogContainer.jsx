@@ -33,12 +33,12 @@ export default class BlogContainer extends Component {
       .catch(() => { this.setState({ loading: false }) })
   }
 
-  handleComment = (comment) => {
-    this.setState((prev) => ({
-      ...prev,
-      comments: prev.comments.concat([comment])
-    }))
-  }
+  // handleComment = (comment) => {
+  //   this.setState((prev) => ({
+  //     ...prev,
+  //     comments: prev.comments.concat([comment])
+  //   }))
+  // }
 
 
   render() {
@@ -49,12 +49,12 @@ export default class BlogContainer extends Component {
       <Fragment>
         <div>
           <Blog title={blog.title} body={blog.body} />
-          <br /><hr />
+          {/* <br /><hr />
           <CommentForm onSend={this.handleComment} />
           <br />
           <ul>
             {comments.map((comment, idx) => <li key={idx}><h3>{comment.author}</h3><p>{comment.message}</p></li>)}
-          </ul>
+          </ul> */}
           <CommentsContainer />
         </div>
       </Fragment>

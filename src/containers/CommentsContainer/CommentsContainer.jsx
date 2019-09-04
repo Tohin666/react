@@ -7,7 +7,8 @@ import CommentsList from 'components/CommentsList'
 
 
 import { connect } from 'react-redux' // метод для связи с редаксом
-import { load } from 'actions/comments' // экшн который мы создали
+// import { load } from 'actions/comments' // экшн который мы создали
+import { load, send, listen } from 'actions/messages'
 
 class CommentsContainer extends Component {// экспортируем внизу
   // export default class CommentsContainer extends Component {
@@ -50,8 +51,11 @@ class CommentsContainer extends Component {// экспортируем вниз�
   }
 
   componentDidMount() {
-    const { loadComments } = this.props // loadComments внизу в mapDispatchToProps
-    loadComments()
+    const { loadMessages, listenMessages } = this.props
+    loadMessages()
+    listenMessages()
+    // const { loadComments } = this.props // loadComments внизу в mapDispatchToProps
+    // loadComments()
 
     window.addEventListener('scroll', this.handleScroll)
   }
@@ -61,13 +65,18 @@ class CommentsContainer extends Component {// экспортируем вниз�
   }
 
   render() {
-    const { comments, loading } = this.props // теперь используем не стейты а пропсы
+    const { messages, send } = this.props
+    // const { comments, loading } = this.props // теперь используем не стейты а пропсы
     // const { comments, loading } = this.state
 
     return (
       <Fragment>
+        <br /><hr />
+        <CommentForm send={send} />
         {/* <CommentForm onSend={this.handleComment} /> */}
-        <CommentsList comments={comments} /> {loading ? 'PROCESSING...' : ''}
+        <br />        
+        <CommentsList messages={messages} />
+        {/* <CommentsList comments={comments} /> {loading ? 'PROCESSING...' : ''} */}
       </Fragment>
     )
   }
@@ -76,15 +85,19 @@ class CommentsContainer extends Component {// экспортируем вниз�
 function mapStateToProps(state, props) {
   return {
     ...props,
-    comments: state.comments.entities, // из редюсера комментс берем энтитис и добавляем в пропс комментс
-    loading: state.comments.loading, // из редюсера комментс берем лоадинг и добавляем в пропс лоадинг
+    messages: state.messages.entities,
+    // comments: state.comments.entities, // из редюсера комментс берем энтитис и добавляем в пропс комментс
+    // loading: state.comments.loading, // из редюсера комментс берем лоадинг и добавляем в пропс лоадинг
   }
 }
 
 function mapDispatchToProps(dispatch, props) {
   return {
     ...props,
-    loadComments: () => dispatch(load())
+    loadMessages: () => dispatch(load()),
+    listenMessages: () => dispatch(listen()),
+    send: (message) => send(message),
+    // loadComments: () => dispatch(load())
     // loadComments: () => load(dispatch)
   }
 }
