@@ -1,0 +1,13 @@
+.comments-list li {
+    display: block;
+    width: 100%;
+}
+
+.comments-list p {
+    font-size: 16px;    
+}
+
+.comments-list h4 {
+    font-size: 12px;
+    font-style: italic;
+}
